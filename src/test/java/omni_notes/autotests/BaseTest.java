@@ -18,16 +18,16 @@ public class BaseTest {
     @BeforeAll
     public static void setup() {
         Configuration.browserSize = null;
-
-        switch (System.getProperty("env")) {
-            case "browserstack":
-                Configuration.browser = BrowserstackMobileDriver.class.getName();
-            case "local":
-                Configuration.browser = LocalMobileDriver.class.getName();
-            default:
-                Configuration.browser = LocalMobileDriver.class.getName();
-
-        }
+        Configuration.browser = LocalMobileDriver.class.getName();
+//        switch (System.getProperty("env")) {
+//            case "browserstack":
+//                Configuration.browser = BrowserstackMobileDriver.class.getName();
+//            case "local":
+//                Configuration.browser = LocalMobileDriver.class.getName();
+//            default:
+//                Configuration.browser = LocalMobileDriver.class.getName();
+//
+//        }
     }
 
     @BeforeEach
