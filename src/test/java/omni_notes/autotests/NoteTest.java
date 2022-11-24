@@ -14,7 +14,7 @@ public class NoteTest extends BaseTest {
     private final NotesPage notesPage = new NotesPage();
 
     @BeforeEach
-    private void skip() {
+    void skip() {
         notesPage
                 .clickNextButton()
                 .clickNextButton()

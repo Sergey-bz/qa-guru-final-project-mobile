@@ -24,6 +24,9 @@ public class BaseTest {
                 Configuration.browser = BrowserstackMobileDriver.class.getName();
             case "local":
                 Configuration.browser = LocalMobileDriver.class.getName();
+            default:
+                Configuration.browser = LocalMobileDriver.class.getName();
+
         }
     }
 
