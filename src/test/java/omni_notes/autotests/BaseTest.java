@@ -18,6 +18,7 @@ public class BaseTest {
     @BeforeAll
     public static void setup() {
         Configuration.browserSize = null;
+        Configuration.timeout = 60000;
 
         switch (System.getProperty("env")) {
             case "browserstack":
