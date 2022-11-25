@@ -9,6 +9,7 @@ import omni_notes.autotests.helpers.Attach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
@@ -19,7 +20,10 @@ public class BaseTest {
     public static void setup() {
         Configuration.browserSize = null;
         Configuration.remote = System.getProperty("remote_url");
-
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
+        Configuration.browserCapabilities = capabilities;
         switch (System.getProperty("env")) {
             case "browserstack":
                 Configuration.browser = BrowserstackMobileDriver.class.getName();
