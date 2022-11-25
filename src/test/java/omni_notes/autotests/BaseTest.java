@@ -18,7 +18,6 @@ public class BaseTest {
     @BeforeAll
     public static void setup() {
         Configuration.browserSize = null;
-        Configuration.timeout = 60000;
 
         switch (System.getProperty("env")) {
             case "browserstack":
@@ -39,14 +38,14 @@ public class BaseTest {
 
     @AfterEach
     public void afterEach() {
-        String sessionId = Selenide.sessionId().toString();
+//        String sessionId = Selenide.sessionId().toString();
 
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         closeWebDriver();
 
-        if (System.getProperty("env").equals("browserstack")) {
-            Attach.video(sessionId);
-        }
+//        if (System.getProperty("env").equals("browserstack")) {
+//            Attach.video(sessionId);
+//        }
     }
 }
