@@ -40,8 +40,8 @@ public class BaseTest {
     public void afterEach() {
 //        String sessionId = Selenide.sessionId().toString();
 
-        Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
+//        Attach.screenshotAs("Last screenshot");
+//        Attach.pageSource();
         closeWebDriver();
 
 //        if (System.getProperty("env").equals("browserstack")) {

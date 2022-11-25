@@ -49,7 +49,7 @@ public class LocalMobileDriver implements WebDriverProvider {
     private File getApp() {
         String appUrl = "https://github.com/federicoiosue/Omni-Notes" +
                 "/releases/download/6.2.0_alpha/OmniNotes-alphaRelease-6.2.0.apk";
-        String appPath = "src/test/resources/apk/OmniNotes-alphaRelease-6.2.0.apk";
+        String appPath = "src/main/resources/apk/OmniNotes-alphaRelease-6.2.0.apk";
 
         File app = new File(appPath);
         if (!app.exists()) {
