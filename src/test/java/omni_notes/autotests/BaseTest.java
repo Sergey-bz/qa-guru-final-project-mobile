@@ -21,12 +21,10 @@ public class BaseTest {
         Configuration.browserSize = null;
         Configuration.remote = System.getProperty("remote_url");
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
+        if (System.getProperty("remote_url") != null) {
+            Configuration.remote = System.getProperty("remote_url");
+        }
         Configuration.browserCapabilities = capabilities;
-        Configuration.browser = System.getProperty("browser_name", "chrome");
-        Configuration.browserVersion = System.getProperty("browser_version", "100.0");
-        Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
         switch (System.getProperty("env")) {
             case "browserstack":
                 Configuration.browser = BrowserstackMobileDriver.class.getName();
