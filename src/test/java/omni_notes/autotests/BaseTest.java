@@ -9,7 +9,6 @@ import omni_notes.autotests.helpers.Attach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
@@ -39,14 +38,14 @@ public class BaseTest {
 
     @AfterEach
     public void afterEach() {
-//        String sessionId = Selenide.sessionId().toString();
+        String sessionId = Selenide.sessionId().toString();
 
-//        Attach.screenshotAs("Last screenshot");
-//        Attach.pageSource();
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
         closeWebDriver();
 
-//        if (System.getProperty("env").equals("browserstack")) {
-//            Attach.video(sessionId);
-//        }
+        if (System.getProperty("env").equals("browserstack")) {
+            Attach.video(sessionId);
+        }
     }
 }
