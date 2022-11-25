@@ -19,12 +19,7 @@ public class BaseTest {
     @BeforeAll
     public static void setup() {
         Configuration.browserSize = null;
-        Configuration.remote = System.getProperty("remote_url");
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        if (System.getProperty("remote_url") != null) {
-            Configuration.remote = System.getProperty("remote_url");
-        }
-        Configuration.browserCapabilities = capabilities;
+
         switch (System.getProperty("env")) {
             case "browserstack":
                 Configuration.browser = BrowserstackMobileDriver.class.getName();
