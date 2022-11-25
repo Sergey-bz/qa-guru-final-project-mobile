@@ -18,6 +18,7 @@ public class BaseTest {
     @BeforeAll
     public static void setup() {
         Configuration.browserSize = null;
+        Configuration.remote = System.getProperty("remote_url");
 
         switch (System.getProperty("env")) {
             case "browserstack":
