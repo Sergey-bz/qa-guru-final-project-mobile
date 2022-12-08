@@ -1,41 +1,29 @@
 package omni_notes.autotests;
 
 import io.qameta.allure.Feature;
-import omni_notes.autotests.pages.NotesPage;
-import org.junit.jupiter.api.BeforeEach;
+import omni_notes.autotests.pages.MenuPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @Feature("Omni note")
 public class NoteTest extends BaseTest {
 
-    private final NotesPage notesPage = new NotesPage();
-
-    @BeforeEach
-    void skip() {
-        notesPage
-                .clickNextButton()
-                .clickNextButton()
-                .clickNextButton()
-                .clickNextButton()
-                .clickNextButton()
-                .clickDoneButton();
-    }
+    private final MenuPage menuPage = new MenuPage();
 
     @Test
     @DisplayName("Check empty list")
     public void emptyListTest() {
-        notesPage
+        notePage
                 .emptyListShouldBeVisible();
     }
 
     @Test
     @DisplayName("Check title")
     public void titleTest() {
-        notesPage
+        menuPage
                 .clickDrawerButton();
 
-        notesPage
+        menuPage
                 .navDrawerTitleEqualTo("Omni Notes Alpha");
     }
 
@@ -45,53 +33,15 @@ public class NoteTest extends BaseTest {
         var title = "Test note";
         var content = "Super test";
 
-        notesPage
+        notePage
                 .clickExpandMenuButton()
                 .clickNoteButton()
                 .setNoteTitle(title)
                 .setNoteContent(content)
                 .clickBackButton();
 
-        notesPage
+        notePage
                 .noteTitleEqualTo(title)
                 .noteContentEqualTo(content);
-    }
-
-    @Test
-    @DisplayName("Check create checklist")
-    public void createCheckListTest() {
-        var title = "Test checklist";
-        var content = " for test";
-
-        notesPage
-                .clickExpandMenuButton()
-                .clickChecklistButton()
-                .setNoteTitle(title)
-                .setChecklistContent(content)
-                .clickBackButton();
-
-        notesPage
-                .noteTitleEqualTo(title)
-                .noteContentEqualTo("New item" + content);
-    }
-
-    @Test
-    @DisplayName("Check menu category")
-    public void menuCategoryTest() {
-        notesPage
-                .clickExpandMenuButton()
-                .clickNoteButton()
-                .setNoteTitle("Test note")
-                .setNoteContent("Super test")
-                .clickMenuCategoryButton()
-                .clickAddCategory()
-                .setCategoryTitle("Test category")
-                .clickSaveButton()
-                .clickBackButton();
-
-        notesPage
-                .categoryMarkerShouldBeVisible()
-                .clickDrawerButton()
-                .countShouldBe(1);
     }
 }

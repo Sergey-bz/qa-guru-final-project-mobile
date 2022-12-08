@@ -6,6 +6,8 @@ import io.qameta.allure.selenide.AllureSelenide;
 import omni_notes.autotests.drivers.BrowserstackMobileDriver;
 import omni_notes.autotests.drivers.LocalMobileDriver;
 import omni_notes.autotests.helpers.Attach;
+import omni_notes.autotests.pages.NotePage;
+import omni_notes.autotests.pages.TipsPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,8 +17,12 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 
 public class BaseTest {
+
+    protected final TipsPage tipsPage = new TipsPage();
+    protected final NotePage notePage = new NotePage();
+
     @BeforeAll
-    public static void setup() {
+    public static void configure() {
         Configuration.browserSize = null;
 
         switch (System.getProperty("env")) {
@@ -31,13 +37,21 @@ public class BaseTest {
     }
 
     @BeforeEach
-    public void startDriver() {
+    public void setUp() {
         addListener("AllureSelenide", new AllureSelenide());
         open();
+
+        tipsPage
+                .clickNextButton()
+                .clickNextButton()
+                .clickNextButton()
+                .clickNextButton()
+                .clickNextButton()
+                .clickDoneButton();
     }
 
     @AfterEach
-    public void afterEach() {
+    public void tearDown() {
         String sessionId = Selenide.sessionId().toString();
 
         Attach.screenshotAs("Last screenshot");
